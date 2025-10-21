@@ -7,7 +7,6 @@ import { useTheme } from "../src/state/themeContext"
 import { StatusBar } from 'react-native'
 import { useState } from "react"
 import SplashScreen from '../src/components/ui/SplashScreen'
-
 function ThemedStack() {
     const { theme } = useTheme();
     const tamaguiTheme = useTamaguiTheme()
