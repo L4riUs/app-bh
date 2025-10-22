@@ -5,6 +5,7 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated'
+import { Link } from 'expo-router'
 
 export default function App() {
   const size = useSharedValue(100)
@@ -25,6 +26,9 @@ export default function App() {
       <Animated.View style={animatedStyle} />
       <View style={{ marginTop: 20 }}>
         <Button title="Animar" onPress={handlePress} />
+        <Link href="client">
+          Cliente
+        </Link>
       </View>
     </View>
   )
