@@ -3,7 +3,7 @@ import { View } from "tamagui";
 import { StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { Home, ShoppingBasket, ChartPie } from "@tamagui/lucide-icons";
+import { Home, ShoppingBasket, ChartPie, Package } from "@tamagui/lucide-icons";
 import { useTheme as useTamaguiTheme } from "tamagui";
 import { useTheme } from "@state/themeContext";
 
@@ -68,7 +68,14 @@ export default function LayoutScreen() {
           tabBarIcon: ({ focused }) => renderIcon(<ChartPie />, focused),
         }}
       />
+      <Tabs.Screen
+        name="productlist"
+        options={{
+          tabBarIcon: ({ focused }) => renderIcon(<Package />, focused),
+        }}
+      />
     </Tabs>
+    
   );
 }
 
