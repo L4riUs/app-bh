@@ -11,8 +11,7 @@ export default function LayoutScreen() {
   const themeTamagui = useTamaguiTheme();
   const { theme } = useTheme();
 
-  const bgColor =
-    theme == "dark" ? themeTamagui.black1?.val : themeTamagui.white3?.val;
+  const bgColor = theme == "dark" ? themeTamagui.black1?.val : themeTamagui.white3?.val;
 
   const renderIcon = (icon: any, focused: boolean) => {
     if (focused) {
