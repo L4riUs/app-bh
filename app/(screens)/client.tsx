@@ -1,10 +1,4 @@
-import React from 'react'
-import { Text } from "tamagui";
-
-const client = () => {
-  return (
-    <Text>client</Text>
-  )
+import ClientScreen from "@features/clients/components/ClientScreen";
+export default function Order() {
+    return <ClientScreen />;
 }
-
-export default client
