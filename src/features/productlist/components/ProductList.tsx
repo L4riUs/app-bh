@@ -1,69 +1,23 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
-import { Card, H2, Image, XStack, YStack, Button, Text, Input, View } from 'tamagui';
-import { MoreHorizontal, Plus, Menu, Bell } from '@tamagui/lucide-icons';
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  image: any;
-}
-
-const products: Product[] = [
-  { id: '1', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '2', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '3', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '4', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '5', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '6', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '7', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '8', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-  { id: '9', name: 'SUPER SMASHER', description: 'DESCRIPCION DEL PRODUCTO', price: '15 $', image: require('../../../../assets/bh_logo.png') },
-];
+import { H2, Image, XStack, YStack, Button, Text, Input, View } from 'tamagui';
+import { Plus } from '@tamagui/lucide-icons';
+import Header from '@components/layout/Header';
+import { Product } from '../types/Product';
+import { getProducts } from '../services/ProductService';
+import ProductListItem from './ProductListItem';
 
 const ProductListScreen = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const renderItem = ({ item }: { item: Product }) => (
-    <Card backgroundColor="#2a2a2a" borderRadius={20} marginVertical={8} padding={12} borderColor="#3a3a3a" borderWidth={1}>
-        <XStack>
-            <Image
-                source={item.image}
-                width={80}
-                height={80}
-                borderRadius={10}
-            />
-            <YStack flex={1} marginLeft={12} justifyContent="space-between">
-                <View>
-                    <Text color="white" fontSize={18} fontWeight="bold">{item.name}</Text>
-                    <Text color="#a0a0a0" fontSize={12}>{item.description}</Text>
-                </View>
-                <XStack justifyContent="space-between" alignItems="center">
-                    <XStack space="$2" alignItems="center">
-                        <Text color="#ff8c00" fontWeight="bold">PRECIO</Text>
-                        <View backgroundColor="rgb(185,62,10)" borderRadius={5} paddingHorizontal={8} paddingVertical={4}>
-                            <Text color="white" fontWeight="bold">{item.price}</Text>
-                        </View>
-                    </XStack>
-                    <Button size="$2" icon={<MoreHorizontal color='#ff8c00'/>} chromeless circular />
-                </XStack>
-            </YStack>
-        </XStack>
-    </Card>
-  );
+  useEffect(() => {
+    getProducts().then(setProducts);
+  }, []);
 
   return (
     <YStack flex={1} backgroundColor="rgb(35,35,35)">
-        {/* Custom Header */}
-        <XStack justifyContent="space-between" alignItems="center" paddingHorizontal={16} paddingTop={10} backgroundColor={"rgb(52,52,52)"}>
-            <Button icon={<Menu color="white" />} chromeless circular />
-            <XStack space={12} alignItems="center">
-                <Button icon={<Bell color="white" />} chromeless circular />
-                <Image source={{ uri: 'https://i.pravatar.cc/150?u=a042581f4e29026704d' }} width={40} height={40} borderRadius={20} />
-            </XStack>
-        </XStack>
+        {/* general Header */}
+        <Header />
 
         <XStack paddingHorizontal={"$2"} justifyContent="space-between" alignItems="center" marginVertical={4}>
             <H2 color="rgb(185,62,10)" fontWeight="bold">PRODUCTOS</H2>
@@ -82,7 +36,7 @@ const ProductListScreen = () => {
 
         <FlatList
             data={products}
-            renderItem={renderItem}
+            renderItem={({ item }) => <ProductListItem item={item} />}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
         />
