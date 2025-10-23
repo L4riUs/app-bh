@@ -1,5 +1,4 @@
-import { Text } from "tamagui";
-
+import OrderScreen from "@features/order/components/OrderScreen";
 export default function Order() {
-    return <Text>OrderScreen</Text>;
+    return <OrderScreen />;
 }
