@@ -8,25 +8,50 @@ import { getProducts } from '../services/ProductService';
 import ProductListItem from './ProductListItem';
 
 const ProductListScreen = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [activeTab, setActiveTab] = useState<'made' | 'processed'>('made');
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    getProducts().then(setAllProducts);
   }, []);
+
+  useEffect(() => {
+    const filtered = allProducts.filter(product => product.type === activeTab);
+    setFilteredProducts(filtered);
+  }, [allProducts, activeTab]);
+
+  const renderTabButton = (tabType: 'made' | 'processed', title: string) => {
+    const isActive = activeTab === tabType;
+    return (
+      <Button
+        flex={1}
+        backgroundColor={isActive ? '#444' : '#2a2a2a'}
+        color={isActive ? 'white' : '#a0a0a0'}
+        borderRadius={20}
+        size={'$1'}
+        borderColor={isActive ? undefined : '#3a3a3a'}
+        borderWidth={isActive ? 0 : 1}
+        onPress={() => setActiveTab(tabType)}
+      >
+        {title}
+      </Button>
+    );
+  }
 
   return (
     <YStack flex={1} backgroundColor="rgb(35,35,35)">
         {/* general Header */}
         <Header />
 
-        <XStack paddingHorizontal={"$2"} justifyContent="space-between" alignItems="center" marginVertical={4}>
+        <XStack paddingHorizontal={'$2'} justifyContent="space-between" alignItems="center" marginVertical={4}>
             <H2 color="rgb(185,62,10)" fontWeight="bold">PRODUCTOS</H2>
             <Image source={require('../../../../assets/bh_logo.png')} width={60} height={65} />
         </XStack>
 
         <XStack space={12} marginVertical={4} backgroundColor={"rgb(30,30,30)"} padding={5}>
-            <Button flex={1} backgroundColor="#444" color="white" borderRadius={20} size={"$1"}>PREPARADOS</Button>
-            <Button flex={1} backgroundColor="#2a2a2a" color="#a0a0a0" borderRadius={20} borderColor="#3a3a3a" size={"$1"} borderWidth={1}>PROCESADOS</Button>
+            {renderTabButton('made', 'PREPARADOS')}
+            {renderTabButton('processed', 'PROCESADOS')}
         </XStack>
 
         <XStack gap={5} marginVertical={4} alignItems="center" paddingHorizontal={5}>
@@ -35,7 +60,7 @@ const ProductListScreen = () => {
         </XStack>
 
         <FlatList
-            data={products}
+            data={filteredProducts}
             renderItem={({ item }) => <ProductListItem item={item} />}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
