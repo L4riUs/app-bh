@@ -5,15 +5,15 @@ export default function OrderTabs_Delivery() {
   return (
     <ScrollView>
       <YStack>
-        <XStack gap={10} marginBottom={30}>
+        <XStack gap={10} marginBottom={30} alignItems="center">
           <Input
             placeholder="Buscar..."
             flex={1}
           />
-          <Button backgroundColor="#ff6600" animation="bouncy">
+          <Button backgroundColor="#ff6600" animation="bouncy" borderRadius={50} width={50} height={50}>
             <Plus />
           </Button>
-          <Button backgroundColor="#ff6600" animation="bouncy">
+          <Button backgroundColor="#ff6600" animation="bouncy" borderRadius={50} width={50} height={50}>
             <Filter />
           </Button>
         </XStack>
