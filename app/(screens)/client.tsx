@@ -1,5 +1,10 @@
+import React from 'react'
 import { Text } from "tamagui";
 
-export default function Order() {
-    return <Text >ClientScreen</Text>;
+const client = () => {
+  return (
+    <Text>client</Text>
+  )
 }
+
+export default client
