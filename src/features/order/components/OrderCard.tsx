@@ -6,7 +6,7 @@ import { useTheme } from "@state/themeContext";
 export default function OrderCard() {
     const { theme } = useTheme()
     return (
-        <YStack backgroundColor={theme == "dark" ? "$black6" : "$white5"} padding={15} borderRadius={15}>
+        <YStack backgroundColor={theme == "dark" ? "$black3" : "$white5"} padding={15} borderRadius={15}>
             <XStack justifyContent="space-between">
                 <YStack>
                     <XStack alignItems="center" gap={10}>
@@ -25,7 +25,7 @@ export default function OrderCard() {
                 </YStack>
             </XStack>
             <Separator borderColor={theme == "dark" ? "$white10" : "#0002"} marginVertical={20} />
-            <ProgressBar />
+            <ProgressBar title="En cocina"/>
         </YStack>
     );
 } 

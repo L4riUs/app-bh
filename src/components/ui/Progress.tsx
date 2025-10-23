@@ -1,19 +1,18 @@
 import { Progress, YStack, Text } from "tamagui";
 import React from "react";
 
-export default function ProgressBar({ value = 45 }: { value?: number }) {
+export default function ProgressBar({ value = 45, title }: { value?: number, title: string }) {
   return (
     <YStack width="100%" position="relative">
       <Progress
         value={value}
         height={25}
         borderRadius="$6"
-        backgroundColor="$neutral3" // o usa tu token/theme
+        backgroundColor="$neutral3"
       >
         <Progress.Indicator animation="bouncy" backgroundColor="#ff6600" />
       </Progress>
 
-      {/* Overlay centrado con el texto */}
       <YStack
         position="absolute"
         top={0}
@@ -22,10 +21,10 @@ export default function ProgressBar({ value = 45 }: { value?: number }) {
         bottom={0}
         alignItems="center"
         justifyContent="center"
-        pointerEvents="none" // deja pasar eventos al Progress si hace falta
+        pointerEvents="none"
       >
         <Text fontWeight="bold" fontSize="$5" color="$white">
-          {value}
+          {title}
         </Text>
       </YStack>
     </YStack>
