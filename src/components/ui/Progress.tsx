@@ -8,7 +8,7 @@ export default function ProgressBar({ value = 45, title }: { value?: number, tit
         value={value}
         height={25}
         borderRadius="$6"
-        backgroundColor="$neutral3"
+        backgroundColor="$black5"
       >
         <Progress.Indicator animation="bouncy" backgroundColor="#ff6600" />
       </Progress>
