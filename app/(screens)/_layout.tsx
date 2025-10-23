@@ -17,7 +17,7 @@ export default function LayoutScreen() {
   const renderIcon = (icon: any, focused: boolean) => {
     if (focused) {
       return (
-        <View top={-15} backgroundColor="$white2" borderRadius={50} width={80} height={80} alignItems="center" justifyContent="center">
+        <View top={-15} backgroundColor={theme == "dark" ? themeTamagui.black4?.val : themeTamagui.white3?.val} borderRadius={50} width={80} height={80} alignItems="center" justifyContent="center">
           <View
             alignItems="center"
             justifyContent="center"
