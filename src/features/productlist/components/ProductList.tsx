@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import { H2, Image, XStack, YStack, Button, Text, Input, View } from 'tamagui';
 import { Plus } from '@tamagui/lucide-icons';
-import Header from '@components/layout/Header';
 import { Product } from '../types/Product';
 import { getProducts } from '../services/ProductService';
 import ProductListItem from './ProductListItem';
@@ -41,8 +40,6 @@ const ProductListScreen = () => {
 
   return (
     <YStack flex={1} backgroundColor="rgb(35,35,35)">
-        {/* general Header */}
-        <Header />
 
         <XStack paddingHorizontal={'$2'} justifyContent="space-between" alignItems="center" marginVertical={4}>
             <H2 color="rgb(185,62,10)" fontWeight="bold">PRODUCTOS</H2>
