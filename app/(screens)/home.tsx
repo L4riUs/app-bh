@@ -1,4 +1,4 @@
-import HomeLayout from "@features/home/components/Home";
+import HomeScreen from "@features/home/components/HomeScreen";
 export default function Home() {
-  return <HomeLayout />
+  return <HomeScreen />
 }
