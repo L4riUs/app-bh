@@ -3,7 +3,7 @@ import { View } from "tamagui";
 import { StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { Home, ShoppingBasket, ChartNoAxesColumn, Package } from "@tamagui/lucide-icons";
+import { Home, ShoppingBasket, ChartNoAxesColumn, Package, ChefHat } from "@tamagui/lucide-icons";
 import { useTheme as useTamaguiTheme } from "tamagui";
 import { useTheme } from "@state/themeContext";
 import Animated from "react-native-reanimated";
@@ -31,6 +31,11 @@ const TAB_CONFIG = [
     name: 'productlist',
     routes: ['/productlist', '/(tabs)/productlist'],
     icon: Package
+  },
+  {
+    name: 'kitchen',
+    routes: ['/kitchen', '/(tabs)/kitchen'],
+    icon: ChefHat
   }
 ];
 
