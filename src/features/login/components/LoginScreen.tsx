@@ -7,8 +7,11 @@ import { CircleArrowRight } from "@tamagui/lucide-icons";
 const { width, height } = Dimensions.get("window");
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Link } from "expo-router";
+import { useTheme } from "@state/themeContext"
+
 
 export default function LoginScreen() {
+    const { theme } = useTheme()
     return (
 
         <KeyboardAwareScrollView
@@ -79,7 +82,7 @@ export default function LoginScreen() {
                         </Button>
                     </Link>
 
-                    <Text color="white" fontSize={14} marginTop="$3">
+                    <Text color={theme == "dark" ? "$white2" : "$black2"} fontSize={16} marginTop="$3">
                         ¿Olvidaste tu contraseña?
                     </Text>
                 </YStack>

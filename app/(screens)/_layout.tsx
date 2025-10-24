@@ -1,73 +1,86 @@
-import { cloneElement } from "react";
-import { View } from "tamagui";
-import { StyleSheet } from "react-native";
-import { Tabs } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
-import { Home, ShoppingBasket, ChartNoAxesColumn, Package, ChefHat } from "@tamagui/lucide-icons";
-import { useTheme as useTamaguiTheme } from "tamagui";
-import { useTheme } from "@state/themeContext";
-import Animated from "react-native-reanimated";
-import { useTabAnimation } from "@components/layout/hook/useTabAnimation"
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
-const AnimatedView = Animated.createAnimatedComponent(View);
+import { cloneElement } from 'react'
+import { View } from 'tamagui'
+import { StyleSheet } from 'react-native'
+import { Tabs } from 'expo-router'
+import { LinearGradient } from 'expo-linear-gradient'
+import {
+  Home,
+  ShoppingBasket,
+  ChartNoAxesColumn,
+  Package,
+  ChefHat,
+} from '@tamagui/lucide-icons'
+import { useTheme as useTamaguiTheme } from 'tamagui'
+import { useTheme } from '@state/themeContext'
+import Animated from 'react-native-reanimated'
+import { useTabAnimation } from '@components/layout/hook/useTabAnimation'
+const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient)
+const AnimatedView = Animated.createAnimatedComponent(View)
 
 const TAB_CONFIG = [
   {
     name: 'home',
     routes: ['/home', '/(tabs)/home'],
-    icon: Home
+    icon: Home,
   },
   {
     name: 'order',
     routes: ['/order', '/(tabs)/order'],
-    icon: ShoppingBasket
+    icon: ShoppingBasket,
   },
   {
     name: 'statistics',
     routes: ['/statistics', '/(tabs)/statistics'],
-    icon: ChartNoAxesColumn
+    icon: ChartNoAxesColumn,
   },
   {
     name: 'productlist',
     routes: ['/productlist', '/(tabs)/productlist'],
-    icon: Package
+    icon: Package,
   },
   {
     name: 'kitchen',
     routes: ['/kitchen', '/(tabs)/kitchen'],
-    icon: ChefHat
-  }
-];
+    icon: ChefHat,
+  },
+]
 
 export default function LayoutScreen() {
-  const themeTamagui = useTamaguiTheme();
-  const { theme } = useTheme();
-  const { activeTab, animatedDropStyle, isTabRoute } = useTabAnimation({ TAB_CONFIG });
+  const themeTamagui = useTamaguiTheme()
+  const { theme } = useTheme()
+  const { activeTab, animatedDropStyle, isTabRoute } = useTabAnimation({
+    TAB_CONFIG,
+  })
 
-  const bgColor = theme == "dark" ? themeTamagui.black1?.val : themeTamagui.white3?.val;
+  const bgColor =
+    theme == 'dark' ? themeTamagui.black1?.val : themeTamagui.white3?.val
 
   const getIconForTab = (tabIndex: number) => {
-    const IconComponent = TAB_CONFIG[tabIndex]?.icon || Home;
-    return <IconComponent color="white" size={26} />;
-  };
+    const IconComponent = TAB_CONFIG[tabIndex]?.icon || Home
+    return <IconComponent color="white" size={26} />
+  }
 
   const renderIcon = (icon: any, focused: boolean) => {
     if (focused) {
       return (
         <View
           top={-15}
-          backgroundColor={theme == "dark" ? themeTamagui.black4?.val : themeTamagui.white3?.val}
+          backgroundColor={
+            theme == 'dark'
+              ? themeTamagui.black4?.val
+              : themeTamagui.white3?.val
+          }
           borderRadius={50}
           width={80}
           height={80}
           alignItems="center"
           justifyContent="center"
         />
-      );
+      )
     } else {
-      return <View>{cloneElement(icon, { color: "#ccc", size: 26 })}</View>;
+      return <View>{cloneElement(icon, { color: '#ccc', size: 26 })}</View>
     }
-  };
+  }
 
   return (
     <>
@@ -98,7 +111,7 @@ export default function LayoutScreen() {
           name="client"
           options={{
             headerShown: false,
-            href: null
+            href: null,
           }}
         />
       </Tabs>
@@ -115,14 +128,14 @@ export default function LayoutScreen() {
         style={animatedDropStyle}
       >
         <AnimatedLinearGradient
-          colors={["#ff6600", "#ffa600"]}
+          colors={['#ff6600', '#ffa600']}
           style={styles.gradientCircle}
         >
           {getIconForTab(activeTab)}
         </AnimatedLinearGradient>
       </AnimatedView>
     </>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -130,13 +143,13 @@ const styles = StyleSheet.create({
     width: 65,
     height: 65,
     borderRadius: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    top: -10
+    top: -10,
   },
-});
+})
