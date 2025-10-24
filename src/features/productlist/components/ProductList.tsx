@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FlatList } from 'react-native';
-import { H2, Image, XStack, YStack, Button, Text, Input, View } from 'tamagui';
+import { H2, Image, XStack, YStack, Button, Input } from 'tamagui';
 import { Plus } from '@tamagui/lucide-icons';
-import { Product } from '../types/Product';
-import { getProducts } from '../services/ProductService';
+import Header from '@components/layout/Header';
 import ProductListItem from './ProductListItem';
+import { useProductSearch } from '../hooks/useProductSearch';
 
 const ProductListScreen = () => {
-  const [allProducts, setAllProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [activeTab, setActiveTab] = useState<'made' | 'processed'>('made');
-
-  useEffect(() => {
-    getProducts().then(setAllProducts);
-  }, []);
-
-  useEffect(() => {
-    const filtered = allProducts.filter(product => product.type === activeTab);
-    setFilteredProducts(filtered);
-  }, [allProducts, activeTab]);
+  const {
+    filteredProducts,
+    activeTab,
+    setActiveTab,
+    searchTerm,
+    handleSearchChange,
+  } = useProductSearch();
 
   const renderTabButton = (tabType: 'made' | 'processed', title: string) => {
     const isActive = activeTab === tabType;
@@ -40,6 +35,8 @@ const ProductListScreen = () => {
 
   return (
     <YStack flex={1} backgroundColor="rgb(35,35,35)">
+        {/* general Header */}
+        <Header />
 
         <XStack paddingHorizontal={'$2'} justifyContent="space-between" alignItems="center" marginVertical={4}>
             <H2 color="rgb(185,62,10)" fontWeight="bold">PRODUCTOS</H2>
@@ -52,7 +49,16 @@ const ProductListScreen = () => {
         </XStack>
 
         <XStack gap={5} marginVertical={4} alignItems="center" paddingHorizontal={5}>
-            <Input flex={1} placeholder="Buscar..." backgroundColor="#2a2a2a" color="white" placeholderTextColor="#a0a0a0" borderRadius={10} />
+            <Input
+                flex={1}
+                placeholder="Buscar..."
+                backgroundColor="#2a2a2a"
+                color="white"
+                placeholderTextColor="#a0a0a0"
+                borderRadius={10}
+                value={searchTerm}
+                onChangeText={handleSearchChange}
+            />
             <Button icon={<Plus color="white" />} backgroundColor="#ff8c00" circular size="$5" />
         </XStack>
 
