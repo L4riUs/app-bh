@@ -20,7 +20,7 @@ export default function HomeLayout() {
       <XStack padding={10} gap={10} flexWrap='wrap'>
         <HomeCard title="CLIENTES" link="client" icon={<Users size={35} />} />
         <HomeCard title="ORDENES" link="order" icon={<ShoppingBasket size={35} />} />
-        <HomeCard title="PRODUCTOS" link="client" icon={<Box size={35} />} />
+        <HomeCard title="PRODUCTOS" link="productlist" icon={<Box size={35} />} />
         <HomeCard title="RESERVACIONES" link="client" icon={<CalendarDays size={35} />} />
         <HomeCard title="COCINA" link="client" icon={<Coffee size={35} />} />
         <HomeCard title="DELIVERY" link="client" icon={<Truck size={35} />} />

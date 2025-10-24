@@ -1,14 +1,16 @@
 import { Progress, YStack, Text } from "tamagui";
 import React from "react";
+import { useTheme } from "@state/themeContext";
 
 export default function ProgressBar({ value = 45, title }: { value?: number, title: string }) {
+  const { theme } = useTheme()
   return (
     <YStack width="100%" position="relative">
       <Progress
         value={value}
         height={25}
         borderRadius="$6"
-        backgroundColor="$black5"
+        backgroundColor={theme == "dark" ? "$black5" :"$white7"}
       >
         <Progress.Indicator animation="bouncy" backgroundColor="#ff6600" />
       </Progress>
@@ -27,6 +29,6 @@ export default function ProgressBar({ value = 45, title }: { value?: number, tit
           {title}
         </Text>
       </YStack>
-    </YStack>
+    </YStack >
   );
 }
