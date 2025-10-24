@@ -22,7 +22,7 @@ export default function HomeLayout() {
         <HomeCard title="ORDENES" link="order" icon={<ShoppingBasket size={35} />} />
         <HomeCard title="PRODUCTOS" link="productlist" icon={<Box size={35} />} />
         <HomeCard title="RESERVACIONES" link="reservation" icon={<CalendarDays size={35} />} />
-        <HomeCard title="COCINA" link="client" icon={<Coffee size={35} />} />
+        <HomeCard title="COCINA" link="kitchen" icon={<Coffee size={35} />} />
         <HomeCard title="DELIVERY" link="delivery" icon={<Truck size={35} />} />
       </XStack>
     </ScrollView>

@@ -33,16 +33,6 @@ const TAB_CONFIG = [
     routes: ['/statistics', '/(tabs)/statistics'],
     icon: ChartNoAxesColumn,
   },
-  {
-    name: 'productlist',
-    routes: ['/productlist', '/(tabs)/productlist'],
-    icon: Package,
-  },
-  {
-    name: 'kitchen',
-    routes: ['/kitchen', '/(tabs)/kitchen'],
-    icon: ChefHat,
-  },
 ]
 
 export default function LayoutScreen() {
@@ -109,6 +99,34 @@ export default function LayoutScreen() {
         {/* Tabs adicionales sin ícono en el tabBar */}
         <Tabs.Screen
           name="client"
+          options={{
+            headerShown: false,
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="delivery"
+          options={{
+            headerShown: false,
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="productlist"
+          options={{
+            headerShown: false,
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="reservation"
+          options={{
+            headerShown: false,
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="kitchen"
           options={{
             headerShown: false,
             href: null,

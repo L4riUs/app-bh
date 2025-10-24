@@ -11,12 +11,12 @@ export default function OrderCard() {
                 <XStack justifyContent="space-between">
                     <YStack>
                         <XStack alignItems="center" gap={10}>
-                            <H4>NRO</H4>
+                            <H4 fontSize={20}>NRO</H4>
                             <Paragraph backgroundColor="#ff6600" padding={5} paddingVertical={1} borderRadius={5}>05454545</Paragraph>
                         </XStack>
 
-                        <XStack alignItems="flex-end" gap={10}>
-                            <H6>CLIENTE</H6>
+                        <XStack alignItems="center" gap={10}>
+                            <H6 fontSize={20}>CLIENTE</H6>
                             <Paragraph>JAAIME VARDY</Paragraph>
                         </XStack>
                     </YStack>
