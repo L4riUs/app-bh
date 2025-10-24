@@ -80,7 +80,7 @@ export default function LayoutScreen() {
           tabBarStyle: {
             backgroundColor: bgColor,
             height: 70,
-            paddingTop: 5,
+            paddingTop: 10,
             borderTopWidth: 0,
           },
           tabBarShowLabel: false,
@@ -168,6 +168,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    top: -10,
+    top: -5,
   },
 })
