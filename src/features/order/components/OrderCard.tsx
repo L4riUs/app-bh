@@ -22,7 +22,7 @@ export default function OrderCard() {
                     </YStack>
                     <YStack alignItems="flex-end">
                         <Ellipsis size={35} />
-                        <Paragraph>10/25/2025</Paragraph>
+                        <Paragraph fontSize={12}>10/25/2025</Paragraph>
                     </YStack>
                 </XStack>
                 <Separator borderColor={theme == "dark" ? "$white10" : "#0002"} marginVertical={20} />
