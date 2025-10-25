@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Alert } from "react-native";
 import { Client } from "../types";
 
 const clientsData: Client[] = [
@@ -18,15 +17,13 @@ const clientsData: Client[] = [
 export function useClients() {
   const [clients, setClients] = useState<Client[]>(clientsData);
   const [search, setSearch] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
 
   const handleSaveClient = (newClient: Omit<Client, "id">) => {
     setClients(prevClients => [
       ...prevClients,
       { ...newClient, id: String(prevClients.length + 1) },
     ]);
-    setModalOpen(false);
-    Alert.alert("Éxito", "Registro exitoso");  };
+  };
 
   const filteredClients = clients.filter(c =>
     c.name.toLowerCase().includes(search.toLowerCase())
@@ -35,8 +32,6 @@ export function useClients() {
   return {
     search,
     setSearch,
-    modalOpen,
-    setModalOpen,
     filteredClients,
     handleSaveClient,
   };

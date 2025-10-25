@@ -4,7 +4,6 @@ import { YStack, XStack, Input, Button } from "tamagui";
 import { Plus } from "@tamagui/lucide-icons";
 import BannerTitle from "@components/layout/BannerTitle";
 import ClientCard from "./ClientCard";
-import ClientModal from "./ClientModal";
 import { useTheme } from "@state/themeContext";
 import { useClients } from "../hooks/useClients";
 
@@ -13,10 +12,7 @@ export default function ClientScreen() {
   const {
     search,
     setSearch,
-    modalOpen,
-    setModalOpen,
     filteredClients,
-    handleSaveClient,
   } = useClients();
 
   return (
@@ -42,7 +38,6 @@ export default function ClientScreen() {
           size="$4"
           backgroundColor="#ff6600"
           icon={Plus}
-          onPress={() => setModalOpen(true)}
         />
       </XStack>
 
@@ -52,12 +47,6 @@ export default function ClientScreen() {
         renderItem={({ item }) => <ClientCard client={item} />}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
-      />
-
-      <ClientModal
-        open={modalOpen}
-        onOpenChange={setModalOpen}
-        onSave={handleSaveClient}
       />
     </YStack>
   );
