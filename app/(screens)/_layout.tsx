@@ -3,13 +3,7 @@ import { View } from 'tamagui'
 import { StyleSheet } from 'react-native'
 import { Tabs } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
-import {
-  Home,
-  ShoppingBasket,
-  ChartNoAxesColumn,
-  Package,
-  ChefHat,
-} from '@tamagui/lucide-icons'
+import { Home, ShoppingBasket, ChartNoAxesColumn } from '@tamagui/lucide-icons'
 import { useTheme as useTamaguiTheme } from 'tamagui'
 import { useTheme } from '@state/themeContext'
 import Animated from 'react-native-reanimated'
@@ -42,8 +36,7 @@ export default function LayoutScreen() {
     TAB_CONFIG,
   })
 
-  const bgColor =
-    theme == 'dark' ? themeTamagui.black1?.val : themeTamagui.white3?.val
+  const bgColor = theme == 'dark' ? themeTamagui.black1?.val : themeTamagui.white3?.val
 
   const getIconForTab = (tabIndex: number) => {
     const IconComponent = TAB_CONFIG[tabIndex]?.icon || Home

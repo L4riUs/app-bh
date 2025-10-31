@@ -1,8 +1,8 @@
 import { TamaguiProvider, Theme, useTheme as useTamaguiTheme } from 'tamagui'
 import { PortalProvider } from "@tamagui/portal"
 import config from '../tamagui.config'
+import { H6 } from 'tamagui'
 import { Stack } from "expo-router"
-import { Menu } from "@tamagui/lucide-icons"
 import ThemeProvider from "../src/core/theme/ThemeProvider"
 import { useTheme } from "../src/state/themeContext"
 import { StatusBar } from 'react-native'
@@ -17,7 +17,7 @@ function ThemedStack() {
             headerStyle: { backgroundColor: theme == "dark" ? tamaguiTheme.black1?.val : tamaguiTheme.white3?.val },
             headerTintColor: tamaguiTheme.color?.val,
             headerTitle: "",
-            headerLeft: () => <Menu size={24} />,
+            headerLeft: () => <H6 fontWeight="bold" color="#ff6600">BURGER HOUSE</H6>,
             headerRight: () => <Header />
         }}>
             <Stack.Screen name="index" options={{ headerShown: false }} />

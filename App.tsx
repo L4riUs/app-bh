@@ -2,7 +2,7 @@ import { TamaguiProvider, Theme, Button, YStack, Text, H1, PortalProvider } from
 import config from './tamagui.config'
 import { useState } from 'react'
 import { StatusBar } from 'react-native'
-import { SheetDemo } from "./otra"
+// import { SheetDemo } from "./otra"
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
