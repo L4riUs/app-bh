@@ -5,8 +5,12 @@ import { Plus } from '@tamagui/lucide-icons';
 import Header from '@components/layout/Header';
 import ProductListItem from './ProductListItem';
 import { useProductSearch } from '../hooks/useProductSearch';
+import { useTheme } from "@state/themeContext"
+
 
 const ProductListScreen = () => {
+  const { theme } = useTheme()
+
   const {
     filteredProducts,
     activeTab,
@@ -34,7 +38,7 @@ const ProductListScreen = () => {
   }
 
   return (
-    <YStack flex={1} backgroundColor="rgb(35,35,35)">
+    <YStack flex={1} backgroundColor={theme == "dark" ? "$black4" : "$white3"}>
         {/* general Header */}
         {/* <Header /> */}
 
@@ -43,7 +47,7 @@ const ProductListScreen = () => {
             <Image source={require('../../../../assets/bh_logo.png')} width={60} height={65} />
         </XStack>
 
-        <XStack space={12} marginVertical={4} backgroundColor={"rgb(30,30,30)"} padding={5}>
+        <XStack space={12} marginVertical={4} padding={5}>
             {renderTabButton('made', 'PREPARADOS')}
             {renderTabButton('processed', 'PROCESADOS')}
         </XStack>
@@ -52,7 +56,6 @@ const ProductListScreen = () => {
             <Input
                 flex={1}
                 placeholder="Buscar..."
-                backgroundColor="#2a2a2a"
                 color="white"
                 placeholderTextColor="#a0a0a0"
                 borderRadius={10}

@@ -6,21 +6,24 @@ import Header from '@components/layout/Header';
 import { Order } from '../types/Order';
 import { getOrders } from '../services/KitchenService';
 import KitchenListItem from './KitchenListItem';
+import { useTheme } from "@state/themeContext"
+
 
 const KitchenScreen = () => {
   const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
   const [activeTab, setActiveTab] = useState<'pending' | 'in_preparation' | 'prepared'>('pending');
-
+  
+  const { theme } = useTheme()
   useEffect(() => {
     getOrders().then(setAllOrders);
   }, []);
-
+  
   useEffect(() => {
     const filtered = allOrders.filter(order => order.status === activeTab);
     setFilteredOrders(filtered);
   }, [allOrders, activeTab]);
-
+  
   const renderTabButton = (tabType: 'pending' | 'in_preparation' | 'prepared', title: string) => {
     const isActive = activeTab === tabType;
     return (
@@ -40,7 +43,7 @@ const KitchenScreen = () => {
   }
 
   return (
-    <YStack flex={1} backgroundColor="rgb(35,35,35)">
+    <YStack flex={1} backgroundColor={theme == "dark" ? "$black4" : "$white3"}>
 
         <XStack paddingHorizontal={'$2'} justifyContent="space-between" alignItems="center" marginVertical={4}>
             <H2 color="rgb(185,62,10)" fontWeight="bold">COCINA</H2>
@@ -54,7 +57,7 @@ const KitchenScreen = () => {
         </XStack>
 
         <XStack gap={5} marginVertical={4} alignItems="center" paddingHorizontal={5}>
-            <Input flex={1} placeholder="Buscar..." backgroundColor="#2a2a2a" color="white" placeholderTextColor="#a0a0a0" borderRadius={10} />
+            <Input flex={1} placeholder="Buscar..." borderRadius={10} />
             <Button icon={<Filter color="#ff8c00" />} backgroundColor="transparent" />
         </XStack>
 
