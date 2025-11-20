@@ -3,7 +3,7 @@ import { View } from 'tamagui'
 import { StyleSheet } from 'react-native'
 import { Tabs } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
-import { Home, ShoppingBasket, ChartNoAxesColumn } from '@tamagui/lucide-icons'
+import { Home, ShoppingBasket, ChartNoAxesColumn, Coffee } from '@tamagui/lucide-icons'
 import { useTheme as useTamaguiTheme } from 'tamagui'
 import { useTheme } from '@state/themeContext'
 import Animated from 'react-native-reanimated'
@@ -23,10 +23,10 @@ const TAB_CONFIG = [
     icon: ShoppingBasket,
   },
   {
-    name: 'statistics',
-    routes: ['/statistics', '/(tabs)/statistics'],
-    icon: ChartNoAxesColumn,
-  },
+    name: 'kitchen',
+    routes: ['/kitchen', '/(tabs)/kitchen'],
+    icon: Coffee,
+  }
 ]
 
 export default function LayoutScreen() {
@@ -119,7 +119,7 @@ export default function LayoutScreen() {
           }}
         />
         <Tabs.Screen
-          name="kitchen"
+          name="statistics"
           options={{
             headerShown: false,
             href: null,

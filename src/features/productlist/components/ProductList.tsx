@@ -36,7 +36,7 @@ const ProductListScreen = () => {
   return (
     <YStack flex={1} backgroundColor="rgb(35,35,35)">
         {/* general Header */}
-        <Header />
+        {/* <Header /> */}
 
         <XStack paddingHorizontal={'$2'} justifyContent="space-between" alignItems="center" marginVertical={4}>
             <H2 color="rgb(185,62,10)" fontWeight="bold">PRODUCTOS</H2>
@@ -59,7 +59,7 @@ const ProductListScreen = () => {
                 value={searchTerm}
                 onChangeText={handleSearchChange}
             />
-            <Button icon={<Plus color="white" />} backgroundColor="#ff8c00" circular size="$5" />
+            {/* <Button icon={<Plus color="white" />} backgroundColor="#ff8c00" circular size="$5" /> */}
         </XStack>
 
         <FlatList
